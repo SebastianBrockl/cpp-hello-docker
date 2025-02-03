@@ -25,23 +25,55 @@ sudo apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
 ```bash
 make
 ```
+
 ### build docker image
 ```
 make docker-build
 ```
+
 ### Push the docker Image to a registry
 ```bash
 export LOCAL_DOCKER_REGISTRY="your registry"
 make docker-push
 ```
+
 ### Run Container localy
 **NOTE!** Since were building a image for the raspberry pi ARM architecture. Running the image might not work on your machine.
 ```
 make docker-run
 ```
+
 ### Clean
 ```
 make clean
+```
+
+## CMake
+
+### CMake Build
+The easy way
+```bash
+make cmake-build
+```
+or the hard way, manually:
+```bash
+mkdir -p build
+cd build
+cmake ..
+make
+cd ..
+```
+### build docker image
+from project home directory:
+```
+cmake --build build --target docker-build
+```
+
+### Push the docker Image to a registry
+from project home directory:
+```bash
+export LOCAL_DOCKER_REGISTRY="your registry"
+cmake --build build --target docker-push
 ```
 
 ## manual

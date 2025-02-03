@@ -15,8 +15,14 @@ CXXFLAGS=-O2 -Wall
 
 # build the binary
 $(BUILD_DIR)/$(TARGET): $(SRC_DIR)/hello.cpp
+	mkdir -p $(BUILD_DIR)/bin
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/bin/$(TARGET) $(SRC_DIR)/hello.cpp
+
+# CMake Build
+cmake-build:
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/$(TARGET) $(SRC_DIR)/hello.cpp
+	cd $(BUILD_DIR) && cmake .. -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_CXX_COMPILER=$(CXX) && make
+
 
 # Build the Docker image (note buildx is required)
 docker-build: $(BUILD_DIR)/$(TARGET)
@@ -36,4 +42,3 @@ clean:
 
 # Phony targets (tells make that they don't produce files)
 .PHONY: docker-build docker-push docker-run clean
-
