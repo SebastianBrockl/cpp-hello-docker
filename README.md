@@ -1,8 +1,10 @@
 # cpp-hello-docker
 
-*minimal cross-compile rapberry pi compatible docker image toy project*
+*minimal rapberry pi compatible cross-compiled c++ docker image toy project*
 
-This is a minimal project with the sole purpose of creating an trivial cross-compiled, raspberry pi compatible docker image for the ARM architecture.
+This is a minimal c++ project with the sole purpose of creating an trivial cross-compiled, raspberry pi compatible docker image for the ARM architecture.
+
+The primary goal of this project is for its author (me) to familiarize themselves with c++ cross compilation as well as targeting foreign architectures with docker. In addition I'm contrasting the `make` and `cmake` build tools.
 
 # Prerequisites
 
@@ -109,5 +111,16 @@ docker buildx create --use
 docker buildx build --platform linux/arm/v7 -t registry.birdo.local/hello-cpp --push .
 ```
 
+# Conclusion
+With the help of chatGPT and copilot:
+- c++ cross-compilation 
+- docker image cross-building
+- make nad cmake setup
+
+...turned out to not be too challenging, which might be expected for such an trivial project. My biggest issues were overwhelmingly the setup of my local network and the various support services and development enviornments required to get my infrastructure in order.
+
+For a small project like this, and my limited experience `make` feels like a much friendlier build tool. Allthough I can se the appeal of `cmake` in a vastly more extensive project, particularly if multiple build targets need to be supported.
+
 # future work
 - Investigate if current build dependencies can be removed almost entirely by using an docker image with the build toolchain preincluded.
+- investigate multi-stage docker image build processes
