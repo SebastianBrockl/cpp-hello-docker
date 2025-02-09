@@ -16,7 +16,7 @@ CXXFLAGS=-O2 -Wall
 # build the binary
 $(BUILD_DIR)/$(TARGET): $(SRC_DIR)/hello.cpp
 	mkdir -p $(BUILD_DIR)/bin
-	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/bin/$(TARGET) $(SRC_DIR)/hello.cpp
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/bin/$(TARGET) $(SRC_DIR)/hello.cpp -static
 
 # CMake Build
 cmake-build:
