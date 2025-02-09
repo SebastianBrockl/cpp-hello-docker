@@ -14,8 +14,12 @@ sudo apt update
 sudo apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
 ```
 ✅ Ensure you have docker with buildx installed
+
 ✅ The Docker daemon running
+
 ✅ Access to the docker registry
+
+You can find isntructions for installing docker engine for ubuntu here: https://docs.docker.com/engine/install/ubuntu/
 
 🛠 **Note!** Im using my local docker registry, you can override my defaults to any registry of your choise with the `env` variable `LOCAL_DOCKER_REGISTRY`, or by editing the `Makefile` directly.
 
